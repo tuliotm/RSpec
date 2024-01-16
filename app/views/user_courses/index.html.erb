@@ -1,0 +1,7 @@
+<% @user_courses.each do |user_course| %>
+  <p><%= "Usuário: #{user_course.user.name}"%> </p>
+  <p><%= "Email: #{user_course.user.email}"%> </p>
+  <p><%= "Curso:#{user_course.course.title}"%> </p>
+  <p><%= "Url:#{user_course.course.video_url}"%> </p>
+  <hr>
+<% end %>
