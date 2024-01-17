@@ -5,6 +5,6 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def name_and_email
-    "#{name} - #{email} - #{Date.current}"
+    "#{name} - #{email}"
   end
 end
