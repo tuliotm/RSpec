@@ -1,6 +1,19 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'simplecov'
+
 ENV['RAILS_ENV'] ||= 'test'
+
+SimpleCov.start do
+  add_group 'Config', 'config'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Libs', 'lib'
+  add_group 'Models', 'app/models'
+  add_group 'Serializers', 'app/serializers'
+  add_group 'Specs', 'spec'
+end
+
+# Previous content of test helper now starts here
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -30,6 +43,8 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  # FactoryBot
+  config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
